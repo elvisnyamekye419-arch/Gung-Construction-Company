@@ -1,0 +1,106 @@
+/* Palette taken from the Gung logo: navy blue, charcoal grey, concrete grey */
+:root{
+  --ink:#1b1d20;
+  --charcoal:#4a4b4d;
+  --navy:#1f4e85;        /* logo blue: buttons, icons on light backgrounds */
+  --navy-deep:#0f2a4a;   /* dark navy: overlays */
+  --sky:#6aa6e0;         /* bright blue: accents on dark photo sections */
+  --concrete:#e6e6e3;
+  --paper:#f4f4f2;
+}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:'Barlow',sans-serif;color:var(--ink);background:var(--paper);font-size:1.08rem;line-height:1.65}
+h1,h2,h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;line-height:1.05;letter-spacing:.01em}
+h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1.2rem}
+h3{font-size:1.5rem;font-weight:700}
+a:focus-visible,button:focus-visible,.form-control:focus,.form-select:focus{outline:3px solid var(--sky);outline-offset:2px;box-shadow:none}
+.py-6{padding:6rem 0}
+.section-intro{max-width:60ch;margin-bottom:2.5rem;color:var(--charcoal)}
+.btn-gung{background:var(--navy);color:#fff;font-weight:600;border:0;border-radius:2px;padding:.55rem 1.4rem}
+.btn-gung:hover{background:#2a68ab;color:#fff}
+.hero .btn-gung,.photo-bg .btn-gung{background:var(--sky);color:var(--navy-deep)}
+.hero .btn-gung:hover,.photo-bg .btn-gung:hover{background:#8bbcec;color:var(--navy-deep)}
+.btn-outline-light{border-radius:2px;border-width:2px}
+
+/* navbar: light, so the dark logo text stays readable */
+.navbar{padding:.7rem 0;background:rgba(244,244,242,.97);box-shadow:0 2px 10px rgba(0,0,0,.12);transition:padding .3s}
+.navbar.scrolled{padding:.35rem 0}
+.navbar-brand{display:flex;align-items:center;margin:0}
+.brand-logo{height:56px;width:auto;display:block;transition:height .3s}
+.navbar.scrolled .brand-logo{height:44px}
+.nav-link{color:var(--charcoal)!important;font-weight:600}
+.nav-link:hover{color:var(--navy)!important}
+.navbar-toggler{color:var(--ink);font-size:1.8rem;border:0}
+.navbar .btn-gung,.navbar .btn-gung:hover{color:#fff!important}
+.navbar .btn-gung{background:var(--navy)}
+@media(max-width:991px){.navbar-collapse{background:var(--paper);padding:1rem;margin-top:.6rem}}
+
+/* ---- Media backgrounds: hero video + section photos ----
+   Every <img>/<video class="bg-img"> fills its section (cover, centered).
+   A navy overlay (::before) sits above the media so text stays readable. */
+.hero,.photo-bg{position:relative;overflow:hidden;isolation:isolate;color:#fff;background:var(--navy-deep)}
+.bg-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2}
+.hero::before,.photo-bg::before{content:"";position:absolute;inset:0;z-index:-1}
+.hero::before{background:linear-gradient(90deg,rgba(12,28,52,.88) 0%,rgba(12,28,52,.35) 70%)}
+#services::before,#why::before,#contact::before{background:rgba(14,26,44,.86)}
+#approach::before{background:rgba(20,52,92,.88)}
+footer.photo-bg::before{background:rgba(14,22,36,.93)}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 0 5rem}
+.hero h1{font-size:clamp(3rem,9vw,6.5rem);margin-bottom:1.4rem;animation:rise .9s ease both}
+.hero-sub{color:var(--sky);font-weight:600;margin-bottom:1rem}
+.hero .lead{max-width:48ch;margin-bottom:2rem}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+
+/* about */
+.about-img{position:relative;overflow:hidden;aspect-ratio:4/3;min-height:320px;background:var(--concrete);border-left:10px solid var(--navy);box-shadow:14px 14px 0 var(--concrete)}
+.about-img .bg-img{z-index:0}
+.vm{display:grid;gap:1.4rem;margin-top:2rem}
+.vm h3{color:var(--navy)}
+.vm i{margin-right:.4rem}
+
+/* services */
+.service{background:#fff;color:var(--ink);padding:2rem;height:100%;border-top:5px solid var(--navy);transition:transform .2s,border-color .2s}
+.service:hover{transform:translateY(-6px);border-color:var(--sky)}
+.service i{font-size:2.2rem;color:var(--navy)}
+.service h3{margin:.8rem 0 .4rem}
+.service p{margin:0;color:var(--charcoal)}
+
+/* approach */
+.step{border:2px solid rgba(255,255,255,.25);padding:1.8rem;height:100%}
+.step span{display:inline-grid;place-items:center;width:2.6rem;height:2.6rem;background:var(--sky);color:var(--navy-deep);font-family:'Barlow Condensed';font-weight:800;font-size:1.5rem}
+.step h3{margin:1rem 0 .4rem}
+.step p{margin:0;color:#d3e3f2}
+
+/* why */
+.checks{list-style:none;padding:0}
+.checks li{padding:.7rem 0 .7rem 2.4rem;border-bottom:1px solid rgba(255,255,255,.2);position:relative;font-weight:500}
+.checks li:before{content:"\F26E";font-family:bootstrap-icons;position:absolute;left:0;color:var(--sky);font-size:1.4rem;top:.45rem}
+.value{background:rgba(255,255,255,.08);backdrop-filter:blur(4px);border-left:4px solid var(--sky);color:#fff;padding:2rem;height:100%}
+.value h3{color:var(--sky)}
+.value p{margin:0;color:#d5d8db}
+
+/* contact */
+.contact-list{list-style:none;padding:0}
+.contact-list li{padding:.6rem 0;font-size:1.2rem}
+.contact-list i{color:var(--sky);margin-right:.6rem}
+.contact-list a{color:#fff;text-decoration:none;border-bottom:2px solid var(--sky)}
+.contact-form{background:#fff;color:var(--ink);padding:2rem;border-top:5px solid var(--navy)}
+.form-control,.form-select{border-radius:2px;padding:.65rem .8rem}
+.contact-form .btn-gung{background:var(--navy);color:#fff}
+.contact-form .btn-gung:hover{background:#2a68ab}
+#formNote{font-weight:600;color:var(--navy)}
+
+/* shared text on photo sections + footer */
+.photo-bg .section-intro{color:#d5d8db}
+footer{padding:3rem 0;color:#d5d8db}
+.footer-logo{height:80px;width:auto;background:var(--paper);padding:.5rem 1.2rem;border-radius:4px;margin-bottom:1rem}
+
+/* back to top */
+.to-top{position:fixed;right:1.2rem;bottom:1.2rem;z-index:1030;width:3rem;height:3rem;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:1.4rem;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s,transform .3s,visibility .3s,background .2s}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:#2a68ab;color:#fff}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:575px){.py-6{padding:4rem 0}.about-img{box-shadow:8px 8px 0 var(--concrete)}}
